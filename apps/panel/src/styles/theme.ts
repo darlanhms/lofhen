@@ -1,9 +1,9 @@
-import { extendTheme, Theme } from '@chakra-ui/react';
+import { defineStyleConfig, extendTheme, Theme } from '@chakra-ui/react';
 
 const theme: Partial<Theme> = extendTheme({
   styles: {
     global: {
-      'html, body': {
+      'html, body, #root': {
         width: '100%',
         height: '100%',
       },
@@ -13,6 +13,13 @@ const theme: Partial<Theme> = extendTheme({
         backgroundColor: 'white',
       },
     },
+  },
+  components: {
+    Button: defineStyleConfig({
+      defaultProps: {
+        colorScheme: 'orange',
+      },
+    }),
   },
 });
 
