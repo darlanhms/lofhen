@@ -1,6 +1,5 @@
-import { Role } from '@lofhen/types';
 import { faker } from '@faker-js/faker';
-import { User } from '@prisma/client';
+import { Role, User } from '@prisma/client';
 import { v4 as uuid } from 'uuid';
 import prisma from '@infra/prisma/client';
 
