@@ -1,0 +1,68 @@
+{
+  "compilerOptions": {
+    "composite": false,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "forceConsistentCasingInFileNames": true,
+    "inlineSources": false,
+    "moduleResolution": "node",
+    "preserveWatchOutput": true,
+    "skipLibCheck": true,
+    "strict": true,
+    "noEmitOnError": true,
+    "allowJs": true,
+    "resolveJsonModule": true,
+    "lib": [
+      "es5",
+      "es6"
+    ],
+    "isolatedModules": false,
+    "strictPropertyInitialization": false,
+    "target": "es6",
+    "module": "commonjs",
+    "outDir": "./dist",
+    "baseUrl": "./src",
+    "declaration": true,
+    "paths": {
+      "@entities/*": [
+        "entities/*"
+      ],
+      "@core/*": [
+        "core/*"
+      ],
+      "@infra/*": [
+        "infra/*"
+      ],
+      "@useCases/*": [
+        "useCases/*"
+      ],
+      "@mappers/*": [
+        "mappers/*"
+      ],
+      "@repositories/*": [
+        "repositories/*"
+      ],
+      "@errors/*": [
+        "errors/*"
+      ],
+      "@utils/*": [
+        "utils/*"
+      ],
+      "@providers/*": [
+        "providers/*"
+      ],
+      "@dtos/*": [
+        "dtos/*"
+      ]
+    }
+  },
+  "include": [
+    "src/*.ts",
+    "src/**/*.ts"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
+}

@@ -1,0 +1,48 @@
+{
+  "name": "@lofhen/api",
+  "version": "1.0.0",
+  "description": "",
+  "main": "dist/types.js",
+  "types": "dist/types.d.ts",
+  "source": "src/types.ts",
+  "scripts": {
+    "dev": "ts-node-dev -r tsconfig-paths/register -r dotenv/config --respawn --transpile-only --ignore-watch node_modules --no-notify src/index.ts",
+    "build": "tsc --project tsconfig.json && tscpaths -p tsconfig.json -s ./src -o ./dist",
+    "up:db": "docker compose -f ./docker-compose.db.yml up -d",
+    "migrate:dev": "prisma migrate dev",
+    "seed": "prisma db seed",
+    "studio": "prisma studio",
+    "test": "jest"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "prisma": {
+    "seed": "ts-node --transpile-only prisma/seed.ts"
+  },
+  "dependencies": {
+    "@prisma/client": "^3.15.1",
+    "@trpc/server": "^10.4.3",
+    "bcrypt": "^5.0.1",
+    "body-parser": "^1.20.0",
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.1",
+    "express": "5.0.0-beta.1",
+    "jsonwebtoken": "^8.5.1",
+    "pg": "^8.7.3",
+    "reflect-metadata": "^0.1.13",
+    "tsyringe": "^4.7.0",
+    "uuid": "^8.3.2",
+    "zod": "^3.20.2"
+  },
+  "devDependencies": {
+    "@pedidos10/tscpaths": "^0.0.2",
+    "@types/bcrypt": "^5.0.0",
+    "@types/cors": "^2.8.12",
+    "@types/express": "^4.17.13",
+    "@types/jsonwebtoken": "^8.5.8",
+    "@types/uuid": "^8.3.4",
+    "prisma": "^3.15.1",
+    "tsconfig-paths": "^3.9.0"
+  }
+}
