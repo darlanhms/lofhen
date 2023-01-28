@@ -14,7 +14,7 @@ export default async function fakeAddress(overrides: Partial<Address> = {}): Pro
   return prisma.address.create({
     data: {
       id: uuid(),
-      alias: faker.name.findName(),
+      alias: faker.name.fullName(),
       cityId: overrides.cityId as string,
       street: faker.address.street(),
       number: faker.address.buildingNumber(),

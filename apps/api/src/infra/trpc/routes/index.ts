@@ -1,6 +1,9 @@
 import { router } from '../index';
+import userRouter from './user';
 
-const appRouter = router({});
+const appRouter = router({
+  user: userRouter,
+});
 
 export type AppRouter = typeof appRouter;
 

@@ -61,6 +61,7 @@ module.exports = {
     'func-names': ['warn', 'never'],
     'no-use-before-define': 'off',
     '@typescript-eslint/no-use-before-define': ['error'],
+    '@typescript-eslint/no-unused-vars': 'off',
     'react/display-name': 'off',
     'react/prop-types': 'off',
     'no-nested-ternary': 'off',

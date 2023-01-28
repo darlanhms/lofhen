@@ -4,6 +4,7 @@ import cors from 'cors';
 import express from 'express';
 
 import '@infra/prisma/middlewares';
+import '@infra/containers';
 import createContext from '../trpc/context';
 import appRouter from '../trpc/routes';
 
