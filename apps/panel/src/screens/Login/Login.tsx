@@ -3,7 +3,7 @@ import { Box, Button, VStack } from '@chakra-ui/react';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
 import banner from '../../assets/images/banner.png';
-import Input from '../../components/Input';
+import Input from '../../components/Input/Input';
 import useAlert from '../../hooks/useAlert';
 import { trpc } from '../../utils/trpc';
 
@@ -27,6 +27,10 @@ const Login: React.FC = () => {
   const loginMutation = trpc.user.login.useMutation({
     onError(error) {
       alert.error(error.message);
+    },
+    onSuccess(data) {
+      localStorage.setItem('accessToken', data.jwt);
+      window.location.assign('/dashboard');
     },
   });
 
