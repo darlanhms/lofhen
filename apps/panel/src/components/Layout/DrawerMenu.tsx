@@ -1,11 +1,4 @@
-import {
-  Drawer,
-  DrawerCloseButton,
-  DrawerContent,
-  DrawerHeader,
-  DrawerOverlay,
-  useMediaQuery,
-} from '@chakra-ui/react';
+import { Drawer, DrawerCloseButton, DrawerContent, DrawerOverlay } from '@chakra-ui/react';
 import useDrawer from '../../hooks/useDrawer';
 import { Sidebar } from './Sidebar';
 

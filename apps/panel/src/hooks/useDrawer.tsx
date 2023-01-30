@@ -1,4 +1,5 @@
 import React, { createContext, useContext, useState } from 'react';
+import { useDisclosure } from '@chakra-ui/react';
 
 interface IDrawerContext {
   close: () => void;
@@ -9,17 +10,13 @@ interface IDrawerContext {
 const DrawerContext = createContext({} as IDrawerContext);
 
 export const DrawerProvider: React.FC<React.PropsWithChildren> = ({ children }) => {
-  const [isOpen, setIsOpen] = useState(false);
-
-  const close = () => setIsOpen(false);
-
-  const open = () => setIsOpen(true);
+  const { isOpen, onClose, onOpen } = useDisclosure();
 
   return (
     <DrawerContext.Provider
       value={{
-        close,
-        open,
+        close: onClose,
+        open: onOpen,
         isOpen,
       }}
     >

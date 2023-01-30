@@ -1,6 +1,7 @@
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import Layout from '../components/Layout/Layout';
 import Login from '../screens/Login/Login';
+import UsersScreen from '../screens/Users/Users';
 import EntryRedirect from './EntryRedirect';
 import PersistDashboard from './PersistDashboard';
 import RequireAuth from './RequireAuth';
@@ -32,7 +33,7 @@ const router = createBrowserRouter([
           },
           {
             path: 'users',
-            element: <h1>Usuários</h1>,
+            element: <UsersScreen />,
           },
         ],
       },
