@@ -30,6 +30,10 @@ const router = createBrowserRouter([
             index: true,
             element: <h1>Home</h1>,
           },
+          {
+            path: 'users',
+            element: <h1>Usuários</h1>,
+          },
         ],
       },
     ],

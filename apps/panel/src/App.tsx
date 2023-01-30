@@ -3,6 +3,7 @@ import { ChakraProvider, CSSReset } from '@chakra-ui/react';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { httpBatchLink } from '@trpc/client';
 import { AuthProvider } from './hooks/useAuth';
+import { DrawerProvider } from './hooks/useDrawer';
 import { Router } from './router/Router';
 import theme from './styles/theme';
 import { trpc } from './utils/trpc';
@@ -40,7 +41,9 @@ const App: React.FC = () => {
       <trpc.Provider client={trpcClient} queryClient={queryClient}>
         <QueryClientProvider client={queryClient}>
           <AuthProvider>
-            <Router />
+            <DrawerProvider>
+              <Router />
+            </DrawerProvider>
           </AuthProvider>
         </QueryClientProvider>
       </trpc.Provider>
