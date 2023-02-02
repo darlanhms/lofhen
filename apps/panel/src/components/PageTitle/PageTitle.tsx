@@ -1,19 +1,35 @@
 import { Helmet } from 'react-helmet';
-import { Center, Flex, Text } from '@chakra-ui/react';
+import { useNavigate } from 'react-router-dom';
+import { HiArrowLeft } from 'react-icons/hi';
+import { Center, IconButton, Text } from '@chakra-ui/react';
 
 interface PageTitleProps {
   title: string;
+  backButton?: boolean;
 }
 
-const PageTitle: React.FC<React.PropsWithChildren<PageTitleProps>> = ({ children, title }) => {
+const PageTitle: React.FC<React.PropsWithChildren<PageTitleProps>> = ({ children, backButton, title }) => {
+  const navigate = useNavigate();
+
   return (
-    <Center justifyContent="space-between" px={10} py={3}>
+    <Center justifyContent="space-between" px={4} py={3}>
       <Helmet>
         <title>{title}</title>
       </Helmet>
-      <Text fontSize="2xl" fontWeight="bold">
-        {title}
-      </Text>
+      <Center>
+        {backButton && (
+          <IconButton
+            aria-label="Voltar"
+            variant="ghost"
+            icon={<HiArrowLeft />}
+            onClick={() => navigate(-1)}
+            mr={2}
+          />
+        )}
+        <Text fontSize="2xl" fontWeight="bold">
+          {title}
+        </Text>
+      </Center>
       {children}
     </Center>
   );

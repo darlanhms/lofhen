@@ -1,28 +1,36 @@
 import React from 'react';
 import { FieldError } from 'react-hook-form';
-import { FormControl, FormLabel, Input as ChakraInput, InputProps as ChakraInputProps } from '@chakra-ui/react';
+import {
+  FormControl,
+  FormErrorMessage,
+  FormLabel,
+  Select as ChakraSelect,
+  SelectProps as ChakraSelectProps,
+} from '@chakra-ui/react';
 import FormHelperText from '../FormHelperText/FormHelperText';
 
-export interface InputProps {
+interface SelectProps extends ChakraSelectProps {
   label?: string;
   helperText?: string;
   error?: boolean;
   fieldError?: FieldError;
 }
 
-const Input = React.forwardRef<HTMLInputElement, InputProps & ChakraInputProps>(
-  ({ label, helperText, error, fieldError: hookError, ...rest }, ref) => {
+const Select: React.FC<SelectProps> = React.forwardRef<HTMLSelectElement, SelectProps>(
+  ({ label, helperText, error, fieldError: hookError, children, ...rest }, ref) => {
     const fieldError = Boolean(hookError?.message) || error;
     const fieldHelperText = hookError?.message || helperText;
 
     return (
       <FormControl isInvalid={fieldError}>
         {label && <FormLabel marginBottom={1}>{label}</FormLabel>}
-        <ChakraInput {...rest} ref={ref} />
+        <ChakraSelect {...rest} ref={ref}>
+          {children}
+        </ChakraSelect>
         {fieldHelperText && <FormHelperText error={fieldError}>{fieldHelperText}</FormHelperText>}
       </FormControl>
     );
   },
 );
 
-export default Input;
+export default Select;

@@ -7,10 +7,6 @@ const EntryRedirect: React.FC = () => {
   const location = useLocation();
   const navigate = useNavigate();
 
-  if (location.pathname !== '/') {
-    return <Outlet />;
-  }
-
   if (isFetching) {
     return <LoadingScreen />;
   }

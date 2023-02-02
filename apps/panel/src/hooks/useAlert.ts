@@ -5,6 +5,7 @@ interface AlertFn {
 }
 
 export interface UseAlertReturn {
+  success: AlertFn;
   error: AlertFn;
   warn: AlertFn;
   info: AlertFn;
@@ -29,6 +30,10 @@ export default function useAlert(): UseAlertReturn {
     });
   };
 
+  const successAlert: AlertFn = (title, description, options) => {
+    toastAlert('success', title, description, options);
+  };
+
   const errorAlert: AlertFn = (title, description, options) => {
     toastAlert('error', title, description, options);
   };
@@ -42,6 +47,7 @@ export default function useAlert(): UseAlertReturn {
   };
 
   return {
+    success: successAlert,
     error: errorAlert,
     warn: warnAlert,
     info: infoAlert,

@@ -1,3 +1,4 @@
+import { useNavigate } from 'react-router-dom';
 import { HiPencil, HiPlus, HiTrash } from 'react-icons/hi';
 import {
   Box,
@@ -14,23 +15,31 @@ import {
   Text,
   useDisclosure,
 } from '@chakra-ui/react';
+import ListContainer from '../../components/ListContainer/ListContainer';
 import PageTitle from '../../components/PageTitle/PageTitle';
 import { trpc } from '../../utils/trpc';
 
 const UsersScreen: React.FC = () => {
   const { data } = trpc.user.list.useQuery();
   const { isOpen, onClose, onOpen } = useDisclosure();
+  const navigate = useNavigate();
 
   return (
     <Box>
       <PageTitle title="Usuários">
-        <IconButton aria-label="Adicionar" size="sm" colorScheme="green" icon={<HiPlus />} />
+        <IconButton
+          aria-label="Adicionar"
+          size="sm"
+          colorScheme="green"
+          icon={<HiPlus />}
+          onClick={() => navigate('create')}
+        />
       </PageTitle>
-      <Box padding={4}>
-        <Card>
+      <Box py={4}>
+        <ListContainer>
           <Stack spacing={2} py={3} divider={<StackDivider />}>
             {data?.map(user => (
-              <Box key={user.id} px={3} cursor="pointer" onClick={() => onOpen()}>
+              <Box key={user.id} px={4} cursor="pointer" onClick={() => onOpen()}>
                 <Heading noOfLines={1} size="sm">
                   {user.name}
                 </Heading>
@@ -40,7 +49,7 @@ const UsersScreen: React.FC = () => {
               </Box>
             ))}
           </Stack>
-        </Card>
+        </ListContainer>
       </Box>
 
       <Drawer placement="bottom" onClose={onClose} isOpen={isOpen}>
